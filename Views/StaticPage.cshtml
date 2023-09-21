@@ -1,0 +1,8 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.StaticPage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "StaticMaster.cshtml";
+}
+
+@await Html.PartialAsync("~/Views/Partials/content.cshtml")

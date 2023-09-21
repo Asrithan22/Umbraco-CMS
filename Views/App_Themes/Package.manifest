@@ -1,0 +1,7 @@
+{
+  "propertyEditors": [],
+  "javascript": [],
+  "css":[
+    "~/Views/App_Themes/style.css"
+  ]
+}

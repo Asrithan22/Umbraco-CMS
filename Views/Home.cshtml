@@ -1,0 +1,67 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.Home>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = null;
+}
+<!DOCTYPE html>
+	<head>
+		<meta charset="utf-8">
+  		<meta name="viewport" content="width=device-width, initial-scale=1">
+  		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  		<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+  		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+		<title>@Model.Name</title>
+		<style>
+
+			.header { position: relative; z-index: 1; margin: 0 40px 0; border-radius: 5px; min-height: 100px; }
+			.header h1 { display: block; margin: 0; width: 210px; height: 55px; position: absolute; left: 0px; top: 17px; z-index: 9997; background-image: url(@(Model.Logo.Url())); background-repeat: no-repeat; background-position: center center; background-size: 100%; transition: all 0.5s ease; }
+			.header .header-menus { position: relative; }
+			.header ul.menus { transition: all 0.5s ease; padding-left: 0; margin-top: 35px; margin-bottom: 0; float: right; }
+			.header ul.menus li { display: inline-block; margin: 0; padding-right: 25px; font-size: 18px; line-height: 25px; }
+			.header ul.menus li a { color: #000; transition: all 0.5s ease; }
+			.header ul.menus li a:hover { color: #0084c3; text-decoration: none; }
+
+			.banner { display: block; background-image: url(@(Model.BannerImage.Url())); background-size: cover; min-height: 580px; background-repeat: no-repeat; }
+			.banner-head { display: table; min-height: 590px; width: 100%; }
+			.banner-head div { display: table-cell; vertical-align: middle }
+			.banner-head h2 { display: block; color: #fff; text-align: center; font-size: 45px; line-height: 45px; }
+			.banner-head h3 { display: block; color: #fff; text-align: center; font-size: 28px; line-height: 35px; font-weight: 100px; }
+
+			.productswrapper { margin: 60px 0 60px; }
+			.productswrapper .products { display: block; }
+			.productswrapper .products-items { display: block; margin: 15px 0; padding: 25px 35px; border: 2px dotted #ccc; border-radius: 8px; max-width: 100%; min-height: 320px; }
+			.productswrapper .products-image h2 { display: block; margin: 20px 0 0; font-size: 45px; line-height: 45px; color: #00195d; font-weight: bold; }
+			.productswrapper .products-items h3 { display: block; font-size: 26px; line-height: 35px; color: #00195d; font-weight: bold; }
+			.productswrapper .products-items p { display: block; font-size: 16px; line-height: 25px; }
+			
+		</style>
+		<script>
+			$(function () {
+				$(".umb-block-list").addClass("row");
+			})
+		</script>
+	</head>
+	<body>
+		@await Html.PartialAsync("~/Views/Partials/header.cshtml")
+		@await Html.PartialAsync("~/Views/Partials/banner.cshtml")
+		<div class="productswrapper">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3">
+				<div class="products-image">
+					<h2>Products we Offer</h2>
+				</div>
+			</div>
+			<div class="col-lg-9">
+				@Html.GetBlockListHtml(Model, "Products")
+		</div>
+		</div>
+	</div>
+</div>
+
+		@await Html.PartialAsync("~/Views/Partials/footer.cshtml")
+	</body>
+</html>
+
